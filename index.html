@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ياسمين 🤍</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+        @keyframes floatAvatar {
+            0%, 100% { transform: translateY(0); }
+            50%       { transform: translateY(-8px); }
+        }
+        @keyframes softGlow {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(160,160,160,0.2); }
+            50%       { box-shadow: 0 0 0 12px rgba(160,160,160,0); }
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: #f5efe8;
+            min-height: 100vh;
+            padding: 44px 16px 70px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .page {
+            width: 100%;
+            max-width: 520px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* ─ بطاقة عامة ─ */
+        .card {
+            background: #fffaf7;
+            border-radius: 24px;
+            padding: 38px 30px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+        }
+
+        /* ─── البطاقة الشخصية ─── */
+        .profile-card {
+            text-align: center;
+            animation: fadeUp 0.8s ease both;
+            border-top: 4px solid #8a0cd380;
+        }
+
+        .avatar-ring {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            margin: 0 auto 22px;
+            padding: 4px;
+            background: linear-gradient(145deg, #d4b8a0, #f5ede4);
+            animation: floatAvatar 4s ease-in-out infinite, softGlow 3s ease-in-out infinite;
+        }
+        .avatar-ring img {
+            width: 100%; height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .profile-name {
+            font-size: 34px;
+            font-weight: 700;
+            color: #1a1a1a;
+            letter-spacing: 1px;
+            animation: fadeIn 0.8s ease 0.3s both;
+        }
+        .profile-sub {
+            font-size: 15px;
+            color: #999999;
+            margin-top: 8px;
+            font-weight: 400;
+            animation: fadeIn 0.8s ease 0.5s both;
+        }
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 9px;
+            margin-top: 22px;
+            animation: fadeIn 0.8s ease 0.7s both;
+        }
+        .tag {
+            background: #f5ede4;
+            border: 1px solid #e0cfc2;
+            color: #7a5c48;
+            font-size: 13px;
+            padding: 7px 18px;
+            border-radius: 20px;
+        }
+
+        /* ─── قسم كتابة الحب ─── */
+        .letter-card {
+            animation: fadeUp 0.8s ease 0.15s both;
+        }
+
+        .letter-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        .letter-header .heart-icon {
+            font-size: 28px;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .letter-header h2 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+        .letter-header p {
+            font-size: 13px;
+            color: #aaa;
+            margin-top: 4px;
+        }
+
+        .verse-block {
+            background: #fdf7f3;
+            border-radius: 16px;
+            padding: 22px 20px;
+            margin-bottom: 14px;
+            border-right: 3px solid #d4b8a0;
+        }
+        .verse-block p {
+            color: #2a2a2a;
+            font-size: 16px;
+            line-height: 2.2;
+            text-align: right;
+        }
+        .verse-block:last-child {
+            margin-bottom: 0;
+        }
+        .verse-highlight {
+            border-right-color: #c49880;
+            background: #f5ede4;
+        }
+        .verse-highlight p {
+            font-weight: 600;
+            font-size: 17px;
+            text-align: center;
+            color: #5a3a28;
+        }
+
+        /* ─── لحظاتنا ─── */
+        .moments-card {
+            animation: fadeUp 0.8s ease 0.3s both;
+        }
+        .moments-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 22px;
+        }
+        .moments-header h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+        .moments-header::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #ebebeb;
+        }
+
+        .moments-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .moments-grid .m-img {
+            border-radius: 18px;
+            overflow: hidden;
+            background: #f0f0f0;
+            border: 1px solid #e4e4e4;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 100%;
+        }
+        .moments-grid .m-img.wide {
+            /* نفس الباقي */
+        }
+        .moments-grid .m-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+        .moments-grid .m-img:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+        }
+
+        /* ─ Footer ─ */
+        .footer {
+            text-align: center;
+            color: #bbb;
+            font-size: 13px;
+            padding: 8px 0 4px;
+            animation: fadeIn 1s ease 0.9s both;
+        }
+
+        @media (max-width: 480px) {
+            body { padding: 20px 12px 50px; }
+            .profile-name { font-size: 28px; }
+            .verse-block p { font-size: 15px; }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+</body>
+</html>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(28px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+        @keyframes floatAvatar {
+            0%, 100% { transform: translateY(0); }
+            50%       { transform: translateY(-7px); }
+        }
+        @keyframes softPulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(180,180,180,0.25); }
+            50%       { box-shadow: 0 0 0 10px rgba(180,180,180,0); }
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: #efefef;
+            min-height: 100vh;
+            padding: 40px 16px 60px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .page {
+            width: 100%;
+            max-width: 540px;
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+        }
+
+        /* ─── بطاقة عامة ─── */
+        .card {
+            background: #fff;
+            border-radius: 22px;
+            padding: 36px 28px;
+            box-shadow: 0 2px 18px rgba(0,0,0,0.07);
+        }
+
+        /* ─── البطاقة الشخصية ─── */
+        .profile-card {
+            text-align: center;
+            animation: fadeUp 0.7s ease both;
+        }
+
+        .avatar-ring {
+            width: 136px;
+            height: 136px;
+            border-radius: 50%;
+            margin: 0 auto 22px;
+            padding: 4px;
+            background: linear-gradient(145deg, #d4d4d4, #ffffff);
+            animation: floatAvatar 4s ease-in-out infinite, softPulse 3s ease-in-out infinite;
+        }
+
+        .avatar-ring img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .profile-name {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1a1a1a;
+            letter-spacing: 1px;
+            animation: fadeIn 0.8s ease 0.3s both;
+        }
+
+        .profile-sub {
+            font-size: 14px;
+            color: #888;
+            margin-top: 6px;
+            animation: fadeIn 0.8s ease 0.5s both;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 9px;
+            margin-top: 20px;
+            animation: fadeIn 0.8s ease 0.7s both;
+        }
+
+        .tag {
+            background: #f4f4f4;
+            border: 1px solid #e2e2e2;
+            color: #444;
+            font-size: 13px;
+            padding: 6px 16px;
+            border-radius: 20px;
+        }
+
+        /* ─── رسالة الحب ─── */
+        .letter-card {
+            animation: fadeUp 0.7s ease 0.2s both;
+        }
+
+        .section-label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #aaa;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .letter-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #222;
+            text-align: center;
+            margin-bottom: 28px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .letter-title::before, .letter-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #e8e8e8;
+        }
+
+        .verse {
+            text-align: center;
+            color: #3a3a3a;
+            font-size: 16px;
+            line-height: 2.3;
+        }
+
+        .dot-divider {
+            text-align: center;
+            color: #ccc;
+            letter-spacing: 8px;
+            margin: 20px 0;
+            font-size: 13px;
+        }
+
+        /* ─── قسم الصور (المحادثات) ─── */
+        .gallery-card {
+            animation: fadeUp 0.7s ease 0.4s both;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .gallery-grid .img-wrap {
+            border-radius: 16px;
+            overflow: hidden;
+            background: #f0f0f0;
+            aspect-ratio: 9/16;
+            border: 1px solid #e8e8e8;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery-grid .img-wrap:first-child {
+            grid-column: 1 / -1;
+            aspect-ratio: 9/14;
+        }
+
+        .gallery-grid .img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+            display: block;
+        }
+
+        .gallery-grid .img-wrap:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 28px rgba(0,0,0,0.12);
+        }
+
+        /* ─── Footer ─── */
+        .footer {
+            text-align: center;
+            color: #aaa;
+            font-size: 13px;
+            padding: 6px 0;
+            animation: fadeIn 1s ease 1s both;
+        }
+
+        @media (max-width: 480px) {
+            body { padding: 20px 12px 50px; }
+            .profile-name { font-size: 26px; }
+            .verse { font-size: 15px; }
+        }
+    </style>
+</head>
+<body>
+    
+<div class="page">
+
+    <!-- ① البطاقة الشخصية -->
+    <div class="card profile-card">
+        <div class="avatar-ring">
+            <img src="profile.png" alt="ياسمين">
+        </div>
+        <h1 class="profile-name">ياسو 💌</h1>
+        <p class="profile-sub">  </p>
+        <div class="tags">
+            <span class="tag">💕 حبيبتي</span>
+            <span class="tag">🌹 قلبي</span>
+            <span class="tag">✨ حياتي</span>
+            <span class="tag">🌙 روحي</span>
+        </div>
+    </div>
+
+    <!-- ② رسالة الحب -->
+    <div class="card letter-card">
+        <div class="letter-title">إلى ام عيالي 💌</div>
+
+
+  <p class="verse">
+         تاريخ تعارفنا <br>
+           2023/6/5 ( الاثنين)  <br>
+        </p>
+
+        <p class="verse">
+            واجت وراحت الأيام واجت سنة ثانية<br>
+            وأنتي بيها حبيبتي وروحي من لدنيا وعمري و زوجتي<br>
+            وأقرب ناس على قلبي كلش
+        </p>
+        <div class="dot-divider">· · ·</div>
+        <p class="verse">
+            فرحان لأن مريت بسنة ودخلت بسنة جديدة<br>
+            وأنتي وياية أحس دنيا م توسعني من فرحتي
+        </p>
+        <div class="dot-divider">· · ·</div>
+        <p class="verse">
+            بوجودك كأنه كنت فاقدة كل هل حب صح<br>
+            أهلي وناسي الي بحولي يحبوني<br>
+         بس كنت محتاجة أحد احبه مثل م الحين احبك ياسو
+        </p>
+        <div class="dot-divider">· · ·</div>
+        <p class="verse">
+            حُبي لك قاعد يزيد بكل لحظة أو دقايق من يومي<br>
+            وحياتي يروح أنتي مو بس حبيبتي<br>
+            أنتي صرتي جزء كبيررررر من حياتي لدرجة<br>
+            بس كلامك معي يفرحني ويخلي يوم كلها سعادة
+        </p>
+        <div class="dot-divider">· · ·</div>
+        <p class="verse">
+            أنتي صايره شيء لوحيد أنه قلبي بس يريد قربك<br>
+            ويريدك ويبقى معاك<br>
+             وكل لحظة أكون وياك وعلمود أشبع منك و ولا بشبع منك<br>
+        </p>
+        <div class="dot-divider">· · ·</div>
+        <p class="verse">
+             مناسبه عيد الفطر  <br>
+             كل عام وانتي بالف خير ياسو  🤍 <br>
+        </p>
+    </div>
+
+    <!-- ③ لحظاتنا - الصور -->
+    <div class="card gallery-card">
+        <div class="section-label">لحظاتنا</div>
+        <div class="gallery-grid">
+            <div class="img-wrap"><img src="msg1.png" alt="رسالة 1"></div>
+            <div class="img-wrap"><img src="msg2.png" alt="رسالة 2"></div>
+            <div class="img-wrap"><img src="msg3.png" alt="رسالة 3"></div>
+            <div class="img-wrap"><img src="msg4.png" alt="رسالة 4"></div>
+            <div class="img-wrap"><img src="msg5.jpg" alt="رسالة 5"></div>
+            <div class="img-wrap"><img src="https://media.discordapp.net/attachments/1111301277884895294/1481103549789110402/IMG_5051.png?ex=69b36a2b&is=69b218ab&hm=634f3e8184a0acd3b63ab266468563c6cd419343caad11babdf025dac3b56a0d&=&format=webp&quality=lossless&width=928&height=1237" alt="رسالة 5"></div>
+            <div class="img-wrap"><img src="https://media.discordapp.net/attachments/1111301277884895294/1481591600806232156/2026-03-12_135556.png?ex=69b3df34&is=69b28db4&hm=5f0604739269d41b5d0e775316fe2dc5846cd014885324b0afcc84a187683210&=&format=webp&quality=lossless&width=207&height=350" alt="رسالة 5"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <p class="footer">أحبكِ يا ياسمين 🤍</p>
+
+</div>
+</body>
+</html>
